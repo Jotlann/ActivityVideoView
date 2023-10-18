@@ -2,6 +2,7 @@ package com.example.activityvideo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
@@ -16,13 +17,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        videoView.findViewById(R.id.videoView);
-        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.fuiyobarry));
+        int guide = getResources().getConfiguration().orientation;
+        if (guide == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            getSupportActionBar().hide();
+        }
+        else
+        {
+            getSupportActionBar().show();
+        }
 
+        videoView.findViewById(R.id.videoView);
+
+        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.fuiyobarry));
         MediaController mc = new MediaController(this);
+
         videoView.setMediaController(mc);
         mc.setAnchorView(videoView);
-        
 
         videoView.start();
 
