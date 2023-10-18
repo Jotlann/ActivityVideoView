@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().show();
         }
 
+
         videoView.findViewById(R.id.videoView);
 
         videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.fuiyobarry));
